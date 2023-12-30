@@ -12,4 +12,12 @@
 - https://www.kaggle.com/datasets/ramjasmaurya/unicorn-startups
 
 ### Run in Development
-- Soon
+- Node v18.17.0 (Pre-requisite)
+- After cloning, do the following
+  - yarn install
+  - cp env.sample .env
+- Get your API_KEY first from Typesense Cloud and update your .env file
+- run: yarn dev 
+- run: yarn typesense-setup
+  - yarn populate (pull the data and build the schema)
+  - yarn start-typesense-server (will let the server run through docker)

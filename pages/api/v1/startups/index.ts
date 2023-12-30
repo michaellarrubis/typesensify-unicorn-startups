@@ -9,8 +9,8 @@ export default apiHandler({
 
 async function getList(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   try {
-    const response = await axios.get<IStartupListResponse>('https://run.mocky.io/v3/0c49d266-3d3e-44ce-9456-4c7d443d0316')
-    res.status(200).json(response.data)
+    const response = await axios.get<IStartupListResponse>('https://run.mocky.io/v3/e64ebdef-e1a7-4ca8-99f6-ebb648ce9180')
+    res.status(200).json(response.data.data)
   } catch (error) {
     res.status(500).json({
       error: {

@@ -2,6 +2,14 @@ import { FC, useEffect, useState } from 'react'
 import { getStartupListService } from '@/services/startups'
 import SearchFilter from '@/components/SearchFilter'
 
+import {
+  InstantSearch,
+  Pagination,
+  RefinementList,
+  SearchBox,
+} from "react-instantsearch-dom";
+import { searchClient } from '@/scripts/startups/typesenseClient';
+
 const Main: FC = () => {
   const [keywordValue, setKeywordValue] = useState<string>('')
 
@@ -10,10 +18,10 @@ const Main: FC = () => {
   }, [])
 
   const getStartupList = async () => {
-    const { data } = await getStartupListService()
+    // const { data } = await getStartupListService()
 
-    if (!!data?.data.length)
-    console.log(data.data)
+    // if (!!data?.data.length)
+    // console.log(data.data)
   }
 
   const handleKeywordChange = (value: string) => {
@@ -29,6 +37,12 @@ const Main: FC = () => {
           Unicorn Startups <small>- <a className="text-blue-400 font-light" href="https://www.kaggle.com/datasets/ramjasmaurya/unicorn-startups" target="_blank">Kaggle Datasets</a></small>
         </div>
       </div>
+      <InstantSearch indexName="startups" searchClient={searchClient}>
+        <SearchBox />
+        <RefinementList attribute="company" />
+        {/* <MoviesHits /> */}
+        <Pagination />
+      </InstantSearch>
       <SearchFilter keywordValue={keywordValue} onChangeKeyword={handleKeywordChange} />
     </main>
   )
