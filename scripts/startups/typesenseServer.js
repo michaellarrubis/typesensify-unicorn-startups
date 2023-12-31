@@ -7,7 +7,6 @@ const PORT = process.env.TYPESENSE_PORT;
 const command = `docker run --platform linux/amd64 -d -p ${PORT}:8108 -v\`pwd\`/typesense-server-data/:/data \
 typesense/typesense:0.22.0.rcu6 --data-dir /data --api-key=${API_KEY} --listen-port ${PORT}  --enable-cors`;
 
-console.log({ API_KEY, PORT, command })
 exec(command, (err, stdout, stderr) => {
   if (!err && !stderr) console.log("Typesense Server is running...");
 

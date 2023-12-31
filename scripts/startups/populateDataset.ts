@@ -68,12 +68,6 @@ module.exports = (async () => {
   const { data } = await axios.get(`${process.env.API_URL}/startups`)
   const startups = !!data.length ? data : []
 
-  try {
-    await typesense.collections('startups').retrieve()
-  } catch (err) {
-    console.error(err)
-  }
-
   await typesense.collections().create(schema)
   console.log('Creating schema...')
 

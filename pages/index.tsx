@@ -4,8 +4,7 @@ import Hits from '@/components/Hits';
 import {
   InstantSearch,
   RefinementList,
-  SearchBox,
-  Pagination
+  SearchBox
 } from "react-instantsearch-dom";
 import { searchClient } from '@/scripts/startups/typesenseClient';
 
@@ -19,9 +18,9 @@ const Main: FC = () => {
         </div>
       </div>
       <InstantSearch indexName="startups" searchClient={searchClient}>
-        <div className="flex mt-8">
-          <RefinementList attribute="industry" className="w-3/12" />
-          <div className="w-9/12 ml-10">
+        <div className="flex mt-8 px-4">
+          <RefinementList attribute="industry" className="hidden sm:block w-3/12" />
+          <div className="w-full sm:w-9/12 sm:ml-10">
             <SearchBox />
             <hr className="h-px my-6 bg-gray-200 border-0 dark:bg-gray-300" />
             
