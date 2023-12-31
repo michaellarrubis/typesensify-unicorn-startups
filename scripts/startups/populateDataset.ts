@@ -68,22 +68,15 @@ module.exports = (async () => {
   const { data } = await axios.get(`${process.env.API_URL}/startups`)
   const startups = !!data.length ? data : []
 
-//Checks if the collection exists
   try {
-    const result = await typesense.collections('startups').retrieve()
-    if (result) {
-      console.log('Found existing collection of startups')
-      await typesense.collections('startups').delete()
-    }
+    await typesense.collections('startups').retrieve()
   } catch (err) {
     console.error(err)
   }
 
-// Create Booke schema
   await typesense.collections().create(schema)
   console.log('Creating schema...')
 
-//Upload book.json to Typesense Database
   try {
     const returnData = await typesense
       .collections('startups')

@@ -18,8 +18,8 @@ export const typesenseAdapter = new TypesenseInstantsearchAdapter({
   // @ts-ignore
   server: TYPESENSE_SERVER_CONFIG,
   additionalSearchParameters: {
-    query_by: "company,date_joined,country,city,industry,investors",
-    query_by_weights: "1,1,4,2,4,4",
+    query_by: "company,country,city,industry,investors",
+    query_by_weights: "4,1,1,4,4",
     num_typos: 3,
     typo_tokens_threshold: 1,
   },

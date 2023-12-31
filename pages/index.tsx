@@ -1,34 +1,15 @@
-import { FC, useEffect, useState } from 'react'
-import { getStartupListService } from '@/services/startups'
-import SearchFilter from '@/components/SearchFilter'
+import { FC } from 'react'
+import Hits from '@/components/Hits';
 
 import {
   InstantSearch,
-  Pagination,
   RefinementList,
   SearchBox,
+  Pagination
 } from "react-instantsearch-dom";
 import { searchClient } from '@/scripts/startups/typesenseClient';
 
 const Main: FC = () => {
-  const [keywordValue, setKeywordValue] = useState<string>('')
-
-  useEffect(() => {
-    getStartupList()
-  }, [])
-
-  const getStartupList = async () => {
-    // const { data } = await getStartupListService()
-
-    // if (!!data?.data.length)
-    // console.log(data.data)
-  }
-
-  const handleKeywordChange = (value: string) => {
-    console.log('value: ', value)
-    setKeywordValue(value)
-  }
-
   return (
     <main className="h-full container mx-auto">
       <div className="text-center mb-10">
@@ -38,12 +19,17 @@ const Main: FC = () => {
         </div>
       </div>
       <InstantSearch indexName="startups" searchClient={searchClient}>
-        <SearchBox />
-        <RefinementList attribute="company" />
-        {/* <MoviesHits /> */}
-        <Pagination />
+        <div className="flex mt-8">
+          <RefinementList attribute="industry" className="w-3/12" />
+          <div className="w-9/12 ml-10">
+            <SearchBox />
+            <hr className="h-px my-6 bg-gray-200 border-0 dark:bg-gray-300" />
+            
+            <p className="text-[16px] mb-2">Top Results:</p>
+            <Hits />
+          </div>
+        </div>
       </InstantSearch>
-      <SearchFilter keywordValue={keywordValue} onChangeKeyword={handleKeywordChange} />
     </main>
   )
 }
