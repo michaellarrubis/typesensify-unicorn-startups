@@ -4,8 +4,8 @@ import { IHitItem } from './interface'
 
 const HitItem:FC<IHitItem> = ({ hit }: IHitItem) => {
   return (
-    <div className="bg-white rounded mb-4 p-4 flex hover:shadow-md">
-      <div className="w-9/12 flex flex-col">
+    <div className="bg-white rounded mb-4 p-4 flex hover:shadow-md relative">
+      <div className="flex flex-col">
         <div className="flex font-semibold text-[18px] mb-2">
           <HitHighlight hit={hit} attribute={'company'} />
           <div className="ml-2 text-[16px]">
@@ -28,7 +28,7 @@ const HitItem:FC<IHitItem> = ({ hit }: IHitItem) => {
           <HitHighlight hit={hit} attribute={'investors'} />
         </div>
       </div>
-      <div className="w-3/12 flex justify-end">
+      <div className="absolute top-4 right-4 flex justify-end">
         <div className="text-[14px] text-gray-500">
           <HitHighlight hit={hit} attribute={'date_joined'} />
         </div>
