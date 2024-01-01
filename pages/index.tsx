@@ -24,7 +24,6 @@ const Main: FC = () => {
             <SearchBox />
             <hr className="h-px my-6 bg-gray-200 border-0 dark:bg-gray-300" />
             
-            <p className="text-[16px] mb-2">Top Results:</p>
             <Hits />
           </div>
         </div>
